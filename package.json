@@ -2,16 +2,27 @@
   "name": "@gglennd/hono-app",
   "type": "module",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build --mode client && vite build",
+    "start": "node dist/index.js"
   },
   "dependencies": {
-    "hono": "^4.7.7"
+    "@hono/node-server": "^1.14.1",
+    "@hono/react-renderer": "^1.0.1",
+    "hono": "^4.7.7",
+    "honox": "^0.1.40",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@hono/vite-build": "^1.6.0",
     "@hono/vite-dev-server": "^0.19.0",
+    "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^22.14.1",
-    "tsx": "^4.19.3",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.8.3",
     "vite": "^6.3.1"
   }
 }
