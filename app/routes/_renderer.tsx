@@ -9,6 +9,7 @@ export default reactRenderer(({ children, title }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {import.meta.env.PROD ? (
           <>
+            <link rel="icon" type="image/x-icon" href="/favicon.ico" />
             <HasIslands>
               <script type="module" src="/static/client.js"></script>
             </HasIslands>
@@ -16,6 +17,7 @@ export default reactRenderer(({ children, title }) => {
           </>
         ) : (
           <>
+            <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
             <script type="module" src="/app/client.ts"></script>
             <link href="/app/style.css" rel="stylesheet" />
           </>

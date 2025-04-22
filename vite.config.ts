@@ -17,25 +17,26 @@ export default defineConfig(({ mode }) => {
           },
         },
         emptyOutDir: false,
-        copyPublicDir: false,
       },
       plugins: [tailwindcss()],
     };
   } else {
     return {
       ssr: {
-        external: ["react", "react-dom"],
+        external: ["react", "react-dom", "pino", "pino-pretty"],
       },
       plugins: [
         honox({
           devServer: { adapter },
-          client: { input: ["./app/style.css"] },
+          client: {
+            input: ["./app/style.css"],
+          },
         }),
         tailwindcss(),
         build({
           port: 3000,
           staticRoot: "./dist",
-          staticPaths: ["/static/*"],
+          staticPaths: ["/static/*", "/favicon.ico"],
         }),
       ],
     };

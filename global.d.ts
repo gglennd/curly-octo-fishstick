@@ -5,3 +5,9 @@ declare module "@hono/react-renderer" {
     title?: string;
   }
 }
+
+declare module "hono" {
+  interface ContextVariableMap {
+    logger: pino.Logger;
+  }
+}
