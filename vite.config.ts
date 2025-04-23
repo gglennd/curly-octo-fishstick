@@ -3,6 +3,7 @@ import adapter from "@hono/vite-dev-server/node";
 import honox from "honox/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
+import path from "path";
 
 export default defineConfig(({ mode }) => {
   if (mode === "client") {
@@ -19,6 +20,11 @@ export default defineConfig(({ mode }) => {
         emptyOutDir: false,
       },
       plugins: [tailwindcss()],
+      resolve: {
+        alias: {
+          "@": path.resolve(__dirname, "./app"),
+        },
+      },
     };
   } else {
     return {
@@ -27,9 +33,15 @@ export default defineConfig(({ mode }) => {
       },
       plugins: [
         honox({
-          devServer: { adapter },
+          islands: true,
+          devServer: {
+            adapter,
+          },
           client: {
             input: ["./app/style.css"],
+          },
+          islandComponents: {
+            reactApiImportSource: "react",
           },
         }),
         tailwindcss(),
@@ -39,6 +51,11 @@ export default defineConfig(({ mode }) => {
           staticPaths: ["/static/*", "/favicon.ico"],
         }),
       ],
+      resolve: {
+        alias: {
+          "@": path.resolve(__dirname, "./app"),
+        },
+      },
     };
   }
 });
